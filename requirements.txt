@@ -1,0 +1,4 @@
+GDAL==3.4.1
+numpy==1.21.5
+opencv_python==4.11.0.86
+Requests==2.32.3

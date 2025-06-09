@@ -1,0 +1,1 @@
+from .recorte_individual_dos_lotes import ProcessadorLotes

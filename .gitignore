@@ -1,0 +1,5 @@
+/venv/
+/.venv/
+src/dataset/processed/
+__pycache__/
+src/dataset/raw/Quadras-AOI.tif
