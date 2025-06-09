@@ -1,6 +1,5 @@
 import os
 import logging
-import requests
 from osgeo import gdal, ogr
 
 # --- Configuração do Logging ---
