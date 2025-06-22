@@ -37,10 +37,9 @@ class ImagePreProcessor:
         lote_resized_rgb = cv.cvtColor(lote_resized_bgr, cv.COLOR_BGR2RGB)
         cv.imwrite(output_path,lote_resized_bgr) # Espera imagem em BGR
         return lote_resized_rgb # nao usado 
-        # lote_processed = lote_resized.astype(np.float32) / 255.0
+        # lote_processed = lote_resized_rgb.astype(np.float32) / 255.0
         # ARRAY NUMPY lote_processed deve estar em um metodo separado para converter img para numpy? 
 
-    #pode ser metodo de classe?
     def resize_with_padding(self,img):
         """Redimensiona mantendo 'aspect ratio' e adicionando padding """
         h, w = img.shape[:2]
@@ -60,4 +59,3 @@ class ImagePreProcessor:
             cv.imshow("Imagem Redimensionada",image)
             cv.waitKey(interval)
             cv.destroyAllWindows()
-    
