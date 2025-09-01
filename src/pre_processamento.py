@@ -22,23 +22,43 @@ class ImagePreProcessor:
     def process_dir(self, show_image_before_resizing=False):
         nomes_arquivos = [image for image in os.listdir(self.image_input_dir) if image.lower().endswith('.png')]
         for image_filename in nomes_arquivos:
-            self.process_image(image_filename, show_image_before_resizing) #retorna array numpy e salva imagens pre-processadas
+            imagem_normalizada = self.process_image(image_filename, show_image_before_resizing) #retorna array numpy e salva imagens pre-processadas
+            output_path = os.path.join(self.output_dir,image_filename)
+            np.save(output_path,imagem_normalizada)
+            # salvar a mascara
+            # salvar usando np.savez 
 
     def process_image(self, filename, show_image_before_resizing) -> np.ndarray:
         input_path = os.path.join(self.image_input_dir, filename)
-        output_path = os.path.join(self.output_dir,filename)
         lote = cv.imread(input_path)
         if lote is None:
             logging.warning(f"Não foi possível ler a imagem: {input_path}")
             return None
         lote_resized_bgr = self.resize_with_padding(lote)
         if(show_image_before_resizing):
-            self._show_resized_image(lote_resized_bgr,3000)
+            self._show_resized_image(lote_resized_bgr,1000)
         lote_resized_rgb = cv.cvtColor(lote_resized_bgr, cv.COLOR_BGR2RGB)
-        cv.imwrite(output_path,lote_resized_bgr) # Espera imagem em BGR
-        return lote_resized_rgb # nao usado 
-        # lote_processed = lote_resized_rgb.astype(np.float32) / 255.0
-        # ARRAY NUMPY lote_processed deve estar em um metodo separado para converter img para numpy? 
+        # cv.imwrite(output_path,lote_resized_bgr) # Espera imagem em BGR #salvando imagem aqui
+        lote_normalized = lote_resized_rgb.astype(np.float32) / 255.0
+        print(type(lote_normalized),lote_normalized.shape,filename)
+        return lote_normalized 
+        # np.savez_compressed(output_path, image=imagem_array, mask=mascara_array) # Salva múltiplos arrays NumPy em um único arquivo.
+
+    def process_image(self, filename, show_image_before_resizing) -> np.ndarray:
+        input_path = os.path.join(self.image_input_dir, filename)
+        lote = cv.imread(input_path)
+        if lote is None:
+            logging.warning(f"Não foi possível ler a imagem: {input_path}")
+            return None
+        lote_resized_bgr = self.resize_with_padding(lote)
+        if(show_image_before_resizing):
+            self._show_resized_image(lote_resized_bgr,1000)
+        lote_resized_rgb = cv.cvtColor(lote_resized_bgr, cv.COLOR_BGR2RGB)
+        # cv.imwrite(output_path,lote_resized_bgr) # Espera imagem em BGR #salvando imagem aqui
+        lote_normalized = lote_resized_rgb.astype(np.float32) / 255.0
+        print(type(lote_normalized),lote_normalized.shape,filename)
+        return lote_normalized 
+        # np.savez_compressed(output_path, image=imagem_array, mask=mascara_array) # Salva múltiplos arrays NumPy em um único arquivo.
 
     def resize_with_padding(self,img):
         """Redimensiona mantendo 'aspect ratio' e adicionando padding """

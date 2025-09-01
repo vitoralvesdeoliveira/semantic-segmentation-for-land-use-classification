@@ -5,8 +5,8 @@ import json
 import cv2 as cv
 import numpy as np
 
-with open('../config.json','r',encoding='utf-8') as config_file:
-      config = json.load(config_file)
+# with open('../config.json','r',encoding='utf-8') as config_file:
+#       config = json.load(config_file)
 
 cwd = os.getcwd()
 

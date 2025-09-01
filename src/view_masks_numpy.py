@@ -56,6 +56,19 @@ for idx, subfolder in enumerate(path.iterdir()):
         label_path = subfolder / "label.png"
         img_path = subfolder / "img.png"
         if idx == 0:
+            if img_path.exists():
+                img_bgr = cv.imread(img_path)
+                salvar_array_em_txt(img_bgr,'img-bgr.txt')
+                img_rgb = cv.cvtColor(img_bgr, cv.COLOR_BGR2RGB)
+                salvar_array_em_txt(img_rgb,'img-rgb.txt')
+                print(img_bgr.dtype)
+                img_rgb_normalized = img_rgb.astype(np.float32) / 255.0
+                salvar_array_em_txt(img_rgb_normalized,'img-normalized.txt')
+                img_preprocessed = resize_with_padding(256,img_rgb_normalized)
+                # np.save(f"dataset/images/{subfolder.name}.npy", img_preprocessed)
+                # np.save(f"dataset/masks/{subfolder.name}.npy", mask_class)
+            else:
+                print(f"Nenhum 'img.png' encontrado em: {subfolder}")
             if label_path.exists():
                 mask_bgr = cv.imread(label_path)
                 mask_rgb = cv.cvtColor(mask_bgr,cv.COLOR_BGR2RGB)
@@ -65,17 +78,8 @@ for idx, subfolder in enumerate(path.iterdir()):
                 for rgb, class_id in COLOR_MAP.items():
                      match = np.all(mask_preprocessed == rgb, axis=-1)
                      mask_class[match] = class_id
-                print(mask_class)
+                # salvar_array_em_txt_2d(mask_class,'maskk.txt')
+                salvar_array_em_txt_2d(mask_preprocessed,'maskk.txt')
             else:
                 print(f"Nenhum 'label.png' encontrado em: {subfolder}")
-            if img_path.exists():
-                img_bgr = cv.imread(img_path)
-                img_rgb = cv.cvtColor(img_bgr, cv.COLOR_BGR2RGB)
-                img_rgb_normalized = img_rgb.astype(np.float32) / 255.0
-                img_preprocessed = resize_with_padding(256,img_rgb_normalized)
-                # print(img_path)
-                # print(img_preprocessed.shape,img_preprocessed.dtype)
-                # salvar_array_em_txt(img_preprocessed,f'{img_path}.txt')
-                # print(img_preprocessed)
-            else:
-                print(f"Nenhum 'img.png' encontrado em: {subfolder}")
+            
