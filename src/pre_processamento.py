@@ -38,6 +38,46 @@ class ImagePreProcessor:
         padded = cv.copyMakeBorder(resized, top, bottom, left, right, cv.BORDER_CONSTANT, value=[0,0,0])
         return padded
 
+class MaskPreProcessor:
+    def __init__(self, target_size: int, color_map: dict):
+        self.target_size = target_size
+        if not isinstance(color_map,dict):
+            raise TypeError("color_map deve ser um dicionário.")
+        self.color_map = color_map
+        logging.info("Processador de máscara inicializado.")
+    
+    def process_mask(self, mask_bgr: np.ndarray) -> np.ndarray:
+        """Converte uma máscara BGR em uma máscara de classes (inteiros)."""
+        resized_mask = self.resize_with_padding(mask_bgr)
+        
+        mask_rgb = cv.cvtColor(resized_mask, cv.COLOR_BGR2RGB)
+        
+        # Cria um array vazio para a máscara de classes
+        class_mask = np.zeros(mask_rgb.shape[:2], dtype=np.uint8)
+
+        # Mapeia as cores para os índices de classe
+        for color, class_id in self.color_map.items():
+            # Encontra todos os pixels com a cor específica
+            matches = np.all(mask_rgb == color, axis=-1)
+            logging.info(f"Matches: {matches}")
+            class_mask[matches] = class_id
+            
+        return class_mask # Retorna a máscara com shape (H, W, 1)
+    
+    def resize_with_padding(self,img):
+        """Redimensiona mantendo 'aspect ratio' e adicionando padding """
+        h, w = img.shape[:2]
+        scale = self.target_size / max(h, w)
+        resized = cv.resize(img, (int(w*scale), int(h*scale)))
+        h_pad = self.target_size - resized.shape[0]
+        w_pad = self.target_size - resized.shape[1]
+        top = h_pad // 2
+        bottom = h_pad - top
+        left = w_pad // 2
+        right = w_pad - left
+        padded = cv.copyMakeBorder(resized, top, bottom, left, right, cv.BORDER_CONSTANT, value=[0,0,0])
+        return padded
+
 def run_preprocessing_pipeline(input_dir: str, output_dir: str, target_size: int):
     """
     Orquestra o pipeline: lê imagens de um diretório, as processa e salva os resultados.
@@ -75,3 +115,4 @@ def run_preprocessing_pipeline(input_dir: str, output_dir: str, target_size: int
 
 # USAGE:
 # run_preprocessing_pipeline('caminho/para/pngs', 'caminho/para/npys', 256)
+# ADICIONAR À ESSA FUNÇÃO O PROCESSAMENTO CONCOMITANTE DAS MÁSCARAS

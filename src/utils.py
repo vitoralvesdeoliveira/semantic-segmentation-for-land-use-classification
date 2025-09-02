@@ -17,7 +17,7 @@ def process_dir(self, show_image_before_resizing=False):
         # np.savez_compressed(output_path, image=imagem_array, mask=mascara_array) # Salva múltiplos arrays NumPy em um único arquivo.
 
 def process_mask(self, filename, show_image_before_resizing) -> np.ndarray:
-        filename_temp = 'label.png'
+        filename_temp = 'label.png' #HARDCODED
         input_path = os.path.join(self.image_input_dir,'masks', filename_temp)
         mascara = cv.imread(input_path)
         if mascara is None:
@@ -30,7 +30,7 @@ def process_mask(self, filename, show_image_before_resizing) -> np.ndarray:
         # ate aqui tudo igual, da pra colocar o processamento da mascara junto com a imagem
         # a mascara vai ter shape (256,256,1) e tenho que rotular com 0-(numero de classes -1)
         # mapear com o dict em view_masks_numpy e retornar uma tupla na funcao process_image com (lote_normalized , mask_normalized) 
-        COLOR_MAP = {
+        COLOR_MAP = { #HARDCODED
         (0, 0, 0): 0,         # unknown
         (0, 255, 0): 1,       # pastagem
         (255, 0, 0): 2,       # agricultura

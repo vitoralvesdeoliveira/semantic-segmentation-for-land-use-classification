@@ -1,5 +1,5 @@
 from recorte_individual_dos_lotes import ProcessadorLotes
-from pre_processamento import ImagePreProcessor,run_preprocessing_pipeline
+from pre_processamento import run_preprocessing_pipeline
 import os
 # import json
 
@@ -18,7 +18,7 @@ extrator = ProcessadorLotes(raster_path=RASTER_INPUT,vector_path=VECTOR_INPUT,ou
 
 extrator.extrair_lotes(fids_a_processar=[24]) # caso nao seja passado o argumento, processa toda a lista
 
-run_preprocessing_pipeline(os.path.join(OUTPUT_DIR,"png"), os.path.abspath(os.path.join(cwd,'dataset', 'processed','images')), 256)
+run_preprocessing_pipeline(os.path.join(OUTPUT_DIR,"png"), os.path.abspath(os.path.join(cwd,'dataset', 'processed','images','normalized')), 256)
 
 
 
