@@ -23,6 +23,7 @@ processor = ImagePreProcessor(image_input_dir=f'{OUTPUT_DIR}/png',output_dir=f'{
 
 processor.process_dir(show_image_before_resizing=True)
 
+
 # def salvar_array_em_txt(array: np.ndarray, caminho_arquivo: str):
 #             """
 #             Salva um array RGB 3D (altura, largura, 3 canais) em um arquivo .txt,
