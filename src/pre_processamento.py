@@ -1,6 +1,6 @@
 import cv2 as cv
-import numpy as np
 import os
+import numpy as np
 import logging
 
 # Configuração do logging
@@ -8,68 +8,21 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 class ImagePreProcessor:
     """
-    Classe para carregar e pré-processar imagens para a rede neural.
+    Processa um array de imagem BGR e retorna um array RGB normalizado.
     """
-    def __init__(self,image_input_dir,output_dir, target_size):
-        if not os.path.isdir(image_input_dir):
-            raise FileNotFoundError(f"O diretório de entrada não foi encontrado: {image_input_dir}")
-        os.makedirs(output_dir, exist_ok=True)
-        logging.info(f"Processador inicializado. Imagens serão salvas em '{output_dir}'.")
-        self.image_input_dir =image_input_dir
-        self.output_dir = output_dir
+    def __init__(self, target_size):
+        logging.info(f"Processador inicializado com target size: {target_size}'.")
         self.target_size = target_size
 
-    def process_dir(self, show_image_before_resizing=False):
-        nomes_arquivos = [image for image in os.listdir(self.image_input_dir) if image.lower().endswith('.png')]
-        for image_filename in nomes_arquivos:
-            imagem_normalizada = self.process_image(image_filename, show_image_before_resizing) #retorna array numpy e salva imagens pre-processadas
-            output_path = os.path.join(self.output_dir,image_filename)
-            np.save(output_path,imagem_normalizada)
-            # salvar a mascara
-            # salvar usando np.savez 
-            # np.savez_compressed(output_path, image=imagem_array, mask=mascara_array) # Salva múltiplos arrays NumPy em um único arquivo.
-
-
-    def process_image(self, filename, show_image_before_resizing) -> np.ndarray:
-        input_path = os.path.join(self.image_input_dir, filename)
-        lote = cv.imread(input_path)
-        if lote is None:
-            logging.warning(f"Não foi possível ler a imagem: {input_path}")
+    def process_image(self, image_bgr: np.ndarray, show_image_before_resizing) -> np.ndarray:
+        if image_bgr is None:
+            logging.warning("Não foi possível ler a imagem: array é None")
             return None
-        lote_resized_bgr = self.resize_with_padding(lote)
-        if(show_image_before_resizing):
-            self._show_resized_image(lote_resized_bgr,1000)
+        lote_resized_bgr = self.resize_with_padding(image_bgr)
         lote_resized_rgb = cv.cvtColor(lote_resized_bgr, cv.COLOR_BGR2RGB)
-        # cv.imwrite(output_path,lote_resized_bgr) # Espera imagem em BGR #salvando imagem aqui
         lote_normalized = lote_resized_rgb.astype(np.float32) / 255.0
-        print(type(lote_normalized),lote_normalized.shape,filename)
+        print(type(lote_normalized),lote_normalized.shape,image_bgr)
         return lote_normalized 
-
-    def process_mask(self, filename, show_image_before_resizing) -> np.ndarray:
-        filename_temp = 'label.png'
-        input_path = os.path.join(self.image_input_dir,'masks', filename_temp)
-        mascara = cv.imread(input_path)
-        if mascara is None:
-            logging.warning(f"Não foi possível ler a mascara da imagem: {input_path}")
-            return None
-        mascara_resized_bgr = self.resize_with_padding(mascara)
-        if(show_image_before_resizing):
-            self._show_resized_image(mascara_resized_bgr,1000)
-        mascara_resized_rgb = cv.cvtColor(mascara_resized_bgr, cv.COLOR_BGR2RGB)
-        # ate aqui tudo igual, da pra colocar o processamento da mascara junto com a imagem
-        # a mascara vai ter shape (256,256,1) e tenho que rotular com 0-(numero de classes -1)
-        # mapear com o dict em view_masks_numpy e retornar uma tupla na funcao process_image com (lote_normalized , mask_normalized) 
-        COLOR_MAP = {
-        (0, 0, 0): 0,         # unknown
-        (0, 255, 0): 1,       # pastagem
-        (255, 0, 0): 2,       # agricultura
-        (0, 0, 255): 3,       # água
-        (128, 128, 128): 4,   # edificação
-        (128, 0, 0): 5,       # indústria
-        (0, 128, 0): 6        # floresta
-        }
-        # print(type(lote_normalized),lote_normalized.shape,filename)
-        return mask_normalized 
 
     def resize_with_padding(self,img):
         """Redimensiona mantendo 'aspect ratio' e adicionando padding """
@@ -85,8 +38,40 @@ class ImagePreProcessor:
         padded = cv.copyMakeBorder(resized, top, bottom, left, right, cv.BORDER_CONSTANT, value=[0,0,0])
         return padded
 
-    def _show_resized_image(self,image,interval):
-        if image is not None:
-            cv.imshow("Imagem Redimensionada",image)
-            cv.waitKey(interval)
-            cv.destroyAllWindows()
+def run_preprocessing_pipeline(input_dir: str, output_dir: str, target_size: int):
+    """
+    Orquestra o pipeline: lê imagens de um diretório, as processa e salva os resultados.
+    """
+    if not os.path.isdir(input_dir):
+        logging.error(f"O diretório de entrada não foi encontrado: {input_dir}")
+        return
+
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # 1. Instancia o processador
+    preprocessor = ImagePreProcessor(target_size=target_size)
+    
+    # 2. Loop de I/O
+    filenames = [f for f in os.listdir(input_dir) if f.lower().endswith('.png')]
+    logging.info(f"Encontradas {len(filenames)} imagens para processar.")
+
+    for filename in filenames:
+        input_path = os.path.join(input_dir, filename)
+        output_path = os.path.join(output_dir, os.path.splitext(filename)[0] + '.npy')
+
+        # 2a. Leitura do arquivo
+        original_image = cv.imread(input_path)
+        if original_image is None:
+            logging.warning(f"Não foi possível ler a imagem: {input_path}")
+            continue
+
+        # 2b. Chamada da lógica de processamento pura
+        processed_image = preprocessor.process_image(original_image)
+        
+        # 2c. Escrita do resultado
+        if processed_image is not None:
+            np.save(output_path, processed_image)
+            logging.info(f"Imagem processada e salva em: {output_path}")
+
+# USAGE:
+# run_preprocessing_pipeline('caminho/para/pngs', 'caminho/para/npys', 256)
