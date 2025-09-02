@@ -14,7 +14,7 @@ class ImagePreProcessor:
         logging.info(f"Processador inicializado com target size: {target_size}'.")
         self.target_size = target_size
 
-    def process_image(self, image_bgr: np.ndarray, show_image_before_resizing) -> np.ndarray:
+    def process_image(self, image_bgr: np.ndarray) -> np.ndarray:
         if image_bgr is None:
             logging.warning("Não foi possível ler a imagem: array é None")
             return None
