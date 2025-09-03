@@ -32,7 +32,7 @@ class ProcessadorLotes:
         self.raster_path = raster_path
         self.vector_path = vector_path
         self.output_dir = output_dir
-        self.output_png_dir = os.path.join(self.output_dir,'png')
+        self.output_png_dir = os.path.join(self.output_dir)
         os.makedirs(self.output_png_dir, exist_ok=True)
         
         logging.info("Processador de Lotes inicializado com sucesso.")

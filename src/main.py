@@ -1,24 +1,39 @@
 from recorte_individual_dos_lotes import ProcessadorLotes
 from pre_processamento import run_preprocessing_pipeline
 import os
-# import json
+import json
 
-# with open('../config.json','r',encoding='utf-8') as config_file:
-#       config = json.load(config_file)
+with open('./config.json','r',encoding='utf-8') as config_file:
+      config = json.load(config_file)
 
 cwd = os.getcwd()
 
-RASTER_INPUT = os.path.abspath(os.path.join(cwd,'dataset', 'raw', 'Quadras-AOI.tif'))
-print(RASTER_INPUT)
-VECTOR_INPUT = os.path.abspath(os.path.join(cwd,'dataset', 'raw', 'Lotes-AOI.shp'))
-OUTPUT_DIR = os.path.abspath(os.path.join(cwd,'dataset', 'raw','images'))
-# mudar para processed dir e raw dir 
+RAW_DATA =  os.path.abspath(os.path.join(cwd,'dataset', 'raw'))
+PROCESSED_DATA =  os.path.abspath(os.path.join(cwd,'dataset', 'processed'))
 
-extrator = ProcessadorLotes(raster_path=RASTER_INPUT,vector_path=VECTOR_INPUT,output_dir=OUTPUT_DIR)
+RASTER_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Quadras-AOI.tif'))
+VECTOR_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Lotes-AOI.shp'))
+# OUTPUT_DIR = os.path.abspath(os.path.join(PROCESSED_DATA))
+
+COLOR_MAP = {
+        (0, 0, 0): 0,         # unknown
+        (0, 255, 0): 1,       # pastagem
+        (255, 0, 0): 2,       # agricultura
+        (0, 0, 255): 3,       # água
+        (128, 128, 128): 4,   # edificação
+        (128, 0, 0): 5,       # indústria
+        (0, 128, 0): 6        # floresta
+}
+
+extrator = ProcessadorLotes(raster_path=RASTER_INPUT,vector_path=VECTOR_INPUT,output_dir=os.path.join(PROCESSED_DATA,"lotes-png"))
 
 extrator.extrair_lotes(fids_a_processar=[24]) # caso nao seja passado o argumento, processa toda a lista
 
-run_preprocessing_pipeline(os.path.join(OUTPUT_DIR,"png"), os.path.abspath(os.path.join(cwd,'dataset', 'processed','images','normalized')), 256)
+run_preprocessing_pipeline(
+    os.path.join(PROCESSED_DATA,"lotes-png"),
+    os.path.abspath(os.path.join(PROCESSED_DATA,'normalized-numpy')),
+    256,
+    COLOR_MAP)
 
 
 
