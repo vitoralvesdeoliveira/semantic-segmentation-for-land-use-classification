@@ -3,7 +3,7 @@ import os
 
 def verificar_dataset():    
     """ Essa função verifica o arquivo .npz que engloba todo o dataset (imagens e máscaras). Retorna informações sobre formato dos dados e conteúdo. """
-    ARQUIVO_DE_DADOS = os.path.abspath('./dataset/processed/segmentation_data.npz') # /normalized-numpy.npz
+    ARQUIVO_DE_DADOS = os.path.abspath('./dataset/processed/normalized-numpy.npz')
 
     if not os.path.exists(ARQUIVO_DE_DADOS):
         print(f"Erro: Arquivo não encontrado em '{ARQUIVO_DE_DADOS}'")
@@ -33,4 +33,5 @@ def verificar_dataset():
         print(f"  - Shape total: {mascaras.shape}")
         print(f"  - Tipo de dado (dtype): {mascaras.dtype}")
         print(f"  - Classes únicas encontradas: {np.unique(mascaras)}") # Mostra todos os IDs de classe presentes
-        
+
+verificar_dataset()

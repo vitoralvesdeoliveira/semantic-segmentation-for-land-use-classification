@@ -5,8 +5,7 @@
       "shapefile": "dataset/raw/Lotes-AOI.shp"
     },
     "output": {
-      "images": "dataset/processed/images/",
-      "masks": "dataset/processed/masks/"
+      "processed_dataset": "dataset/processed/"
     }
   },
   "processing_params": {
