@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 class ProcessadorLotes:
     """
-    Uma classe para extrair lotes de um arquivo raster com base em feições de um arquivo vetorial.
+    Classe para extrair recortes (lotes) de um arquivo raster com base em feições de um arquivo vetorial.
 
     Atributos:
         raster_path (str): Caminho para o arquivo raster de entrada.
@@ -32,8 +32,7 @@ class ProcessadorLotes:
         self.raster_path = raster_path
         self.vector_path = vector_path
         self.output_dir = output_dir
-
-        self.output_png_dir = os.path.join(self.output_dir, 'png')
+        self.output_png_dir = os.path.join(self.output_dir)
         os.makedirs(self.output_png_dir, exist_ok=True)
         
         logging.info("Processador de Lotes inicializado com sucesso.")
