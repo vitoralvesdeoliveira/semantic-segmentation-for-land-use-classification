@@ -1,10 +1,11 @@
 from recorte_individual_dos_lotes import ProcessadorLotes
 from pre_processamento import run_preprocessing_pipeline
 import os
-import json
+# import json
 
-with open('./config.json','r',encoding='utf-8') as config_file:
-      config = json.load(config_file)
+# with open('./config.json','r',encoding='utf-8') as config_file:
+#       config = json.load(config_file)
+# print(config) # Uma boa alternativa é usar .env
 
 cwd = os.getcwd()
 
@@ -13,7 +14,6 @@ PROCESSED_DATA =  os.path.abspath(os.path.join(cwd,'dataset', 'processed'))
 
 RASTER_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Quadras-AOI.tif'))
 VECTOR_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Lotes-AOI.shp'))
-# OUTPUT_DIR = os.path.abspath(os.path.join(PROCESSED_DATA))
 
 COLOR_MAP = {
         (0, 0, 0): 0,         # unknown
@@ -30,7 +30,7 @@ extrator = ProcessadorLotes(raster_path=RASTER_INPUT,vector_path=VECTOR_INPUT,ou
 extrator.extrair_lotes(fids_a_processar=[24]) # caso nao seja passado o argumento, processa toda a lista
 
 run_preprocessing_pipeline(
-    os.path.join(PROCESSED_DATA,"lotes-png"),
+    PROCESSED_DATA,
     os.path.abspath(os.path.join(PROCESSED_DATA,'normalized-numpy')),
     256,
     COLOR_MAP)
