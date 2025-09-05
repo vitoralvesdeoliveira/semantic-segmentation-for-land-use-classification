@@ -60,10 +60,18 @@ class MaskPreProcessor(Processor):
         class_mask = np.zeros(mask_rgb.shape[:2], dtype=np.uint8)
 
         # Mapeia as cores para os índices de classe
-        for color, class_id in self.color_map.items():
+        global debug_temp
+        debug_temp = True
+        
+        for color, class_id in self.color_map.items(): # color é uma tupla (r,g,b)
             # Encontra todos os pixels com a cor específica
-            matches = np.all(mask_rgb == color, axis=-1)
+            matches = np.all(mask_rgb == color, axis=-1) 
             class_mask[matches] = class_id
+            
+            if(debug_temp):
+                print(matches)
+                print(class_mask[matches])
+            debug_temp = False
 
         return class_mask # Retorna a máscara com shape (H, W)
 
