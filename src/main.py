@@ -11,13 +11,13 @@ RASTER_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Quadras-AOI.tif'))
 VECTOR_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Lotes-AOI.shp'))
 
 COLOR_MAP = {
-        (0, 0, 0): 0,         # unknown
-        (0, 255, 0): 1,       # pastagem
-        (255, 0, 0): 2,       # agricultura
-        (0, 0, 255): 3,       # água
-        (128, 128, 0): 4,   # edificação
-        (128, 0, 0): 5,       # indústria
-        (0, 128, 0): 6        # floresta
+        (0, 0, 0): 0,        
+        (0, 255, 0): 1,      
+        (255, 0, 0): 2,      
+        (0, 0, 255): 3,      
+        (128, 128, 0): 4,  # edificação
+        (128, 0, 0): 5,    # industrial  
+        (0, 128, 0): 6     # vegetada
 }
 
 extrator = ProcessadorLotes(raster_path=RASTER_INPUT,vector_path=VECTOR_INPUT,output_dir=os.path.join(PROCESSED_DATA,"lotes-png"))
