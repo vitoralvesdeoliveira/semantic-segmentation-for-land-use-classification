@@ -75,7 +75,7 @@ def run_preprocessing_pipeline(input_dir: str, output_dir: str, target_size: int
         logging.error(f"O diretório de entrada não foi encontrado: {input_dir}")
         return
 
-    os.makedirs(output_dir, exist_ok=True)
+    # os.makedirs(output_dir, exist_ok=True)
     
     # 1. Instancia os pré processadores
     image_preprocessor = ImagePreProcessor(target_size=target_size)

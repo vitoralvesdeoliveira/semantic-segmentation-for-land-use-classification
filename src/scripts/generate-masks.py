@@ -39,9 +39,12 @@ def create_segmentation_mask(json_file, output_dir, class_labels):
 
 
 def main():
-    input_dir = './dataset/processed/labels-json' # "/path to json files"
-    output_dir = "./dataset/processed/labels-png"
 
+    input_dir = '../dataset/processed/labels-json' # "/path to json files"
+    output_dir = "../dataset/processed/labels-png"
+    print(os.path.exists(input_dir))
+    # os.makedirs(input_dir)
+    
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
     

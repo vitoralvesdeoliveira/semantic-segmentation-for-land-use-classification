@@ -15,7 +15,7 @@ COLOR_MAP = {
         (0, 255, 0): 1,       # pastagem
         (255, 0, 0): 2,       # agricultura
         (0, 0, 255): 3,       # água
-        (128, 128, 0): 4,   # edificação ########################
+        (128, 128, 0): 4,   # edificação
         (128, 0, 0): 5,       # indústria
         (0, 128, 0): 6        # floresta
 }
@@ -26,6 +26,6 @@ extrator.extrair_lotes(fids_a_processar=[0,35]) # caso nao seja passado o argume
 
 run_preprocessing_pipeline(
     PROCESSED_DATA,
-    os.path.abspath(os.path.join(PROCESSED_DATA,'normalized-numpy')),
+    os.path.abspath(os.path.join(PROCESSED_DATA)),
     256,
     COLOR_MAP)
