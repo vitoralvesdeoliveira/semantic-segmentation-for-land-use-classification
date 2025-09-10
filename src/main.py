@@ -11,7 +11,7 @@ RASTER_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Quadras-AOI.tif'))
 VECTOR_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Lotes-AOI.shp'))
 
 COLOR_MAP = {
-        (0, 0, 0): 0,        
+        (0, 0, 0): 0,     # unknown   
         (0, 255, 0): 1,      
         (255, 0, 0): 2,      
         (0, 0, 255): 3,      
