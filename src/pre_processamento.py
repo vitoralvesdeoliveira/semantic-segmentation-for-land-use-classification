@@ -79,12 +79,11 @@ def run_preprocessing_pipeline(input_dir: str, output_dir: str, target_size: int
     
     # 1. Instancia os pré processadores
     image_preprocessor = ImagePreProcessor(target_size=target_size)
-    mask_preprocessor = MaskPreProcessor(target_size=target_size, color_map= mask_color_map)
-    
+    mask_preprocessor = MaskPreProcessor(target_size=target_size, color_map= mask_color_map)        
+        
     # 2. Loop de I/O
-    image_filenames = sorted([f for f in os.listdir(os.path.join(input_dir,"lotes-png"),) if f.lower().endswith('.png')]) # sorted() não ordena os numeros da mesma maneira,mas ao estabelecer padrão para nomear imagens e labels funciona
-    label_filenames = sorted([f for f in os.listdir(os.path.join(input_dir,"labels-png"),) if f.lower().endswith('.png')]) # sorted() não ordena os numeros da mesma maneira,mas ao estabelecer padrão para nomear imagens e labels funciona
-    print(image_filenames,label_filenames)
+    image_filenames = [f for f in os.listdir(os.path.join(input_dir,"lotes-png"),) if f.lower().endswith('.png')]
+    label_filenames = [f for f in os.listdir(os.path.join(input_dir,"labels-png"),) if f.lower().endswith('.png')]
     logging.info(f"Encontradas {len(image_filenames)} imagens e {len(label_filenames)} labels para processar.")
 
     array_de_imagens = []

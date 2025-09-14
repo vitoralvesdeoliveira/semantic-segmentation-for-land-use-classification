@@ -26,24 +26,24 @@ def create_segmentation_mask(json_file, output_dir, class_labels):
     for name, value in label_name_to_value.items():
         label_names[value] = name
 
-    lbl_viz = imgviz.label2rgb(lbl, imgviz.asgray(img), label_names=label_names, loc="rb")
 
     base_name = os.path.splitext(os.path.basename(json_file))[0]
+    utils.lblsave(os.path.join(output_dir, f"{base_name}.png"), lbl) # Só o que interessa para o processamento da rede neural
+    
     # PIL.Image.fromarray(img).save(os.path.join(output_dir, f"{base_name}_img.png"))
-    utils.lblsave(os.path.join(output_dir, f"{base_name}_label.png"), lbl) # Só o que interessa para o processamento da rede neural
     # PIL.Image.fromarray(lbl_viz).save(os.path.join(output_dir, f"{base_name}_label_viz.png"))
-
-    with open(os.path.join(output_dir, f"{base_name}_label_names.txt"), "w") as f:
-        for lbl_name in label_names:
-            f.write(lbl_name + "\n")
+    # with open(os.path.join(output_dir, f"{base_name}_label_names.txt"), "w") as f:
+    #     for lbl_name in label_names:
+    #         f.write(lbl_name + "\n")
+    # lbl_viz = imgviz.label2rgb(lbl, imgviz.asgray(img), label_names=label_names, loc="rb")
 
 
 def main():
 
     input_dir = '../dataset/processed/labels-json' # "/path to json files"
     output_dir = "../dataset/processed/labels-png"
-    print(os.path.exists(input_dir))
-    # os.makedirs(input_dir)
+    
+    # os.makedirs(input_dir)        
     
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)

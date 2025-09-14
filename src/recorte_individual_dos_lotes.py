@@ -40,7 +40,7 @@ class ProcessadorLotes:
     def _processar_feicao(self, feature, raster_ds, x_res, y_res):
         """Processa uma única feição do arquivo vetorial."""
         fid = feature.GetFID()
-        output_png = os.path.join(self.output_png_dir, f'lote_{fid}.png')
+        output_png = os.path.join(self.output_png_dir, f'{fid}.png')
 
         try:
             # --- 1. Warp (corte) ---
