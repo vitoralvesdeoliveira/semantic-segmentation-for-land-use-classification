@@ -12,12 +12,12 @@ VECTOR_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Lotes-AOI.shp'))
 
 COLOR_MAP = {
         (0, 0, 0): 0,     # unknown   
-        (0, 255, 0): 1,      
-        (255, 0, 0): 2,      
-        (0, 0, 255): 3,      
-        (128, 128, 0): 4,  # edificação
-        (128, 0, 0): 5,    # industrial  
-        (0, 128, 0): 6     # vegetada
+        # (0, 255, 0): 1,      
+        # (255, 0, 0): 2,      
+        # (0, 0, 255): 3,      
+        (128, 128, 0): 1,  # edificação
+        (128, 0, 0): 2,    # industrial  
+        (0, 128, 0): 3,     # vegetada
 }
 
 extrator = ProcessadorLotes(raster_path=RASTER_INPUT,vector_path=VECTOR_INPUT,output_dir=os.path.join(PROCESSED_DATA,"lotes-png"))
