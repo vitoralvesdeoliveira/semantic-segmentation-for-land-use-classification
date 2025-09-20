@@ -38,7 +38,7 @@ class ImagePreProcessor(Processor):
         if image_bgr is None:
             logging.warning("Não foi possível ler a imagem: array é None")
             return None
-        lote_resized_bgr = self.resize_with_padding(image_bgr)
+        lote_resized_bgr = self.resize_with_padding(image_bgr).astype(np.float32)
         lote_resized_rgb = cv.cvtColor(lote_resized_bgr, cv.COLOR_BGR2RGB)
         lote_normalized = lote_resized_rgb.astype(np.float32) / 255.0
         return lote_normalized
@@ -112,16 +112,12 @@ def run_preprocessing_pipeline(input_dir: str, output_dir: str, target_size: int
             
         array_de_imagens.append(processed_image)
         array_de_labels.append(processed_class_mask)
-        
-        # np.save(os.path.join(image_output_path), processed_image)
-        # np.save(os.path.join(label_output_path),processed_class_mask)
     
     # 3. Salva Dataset
     array_de_imagens = np.array(array_de_imagens,dtype=np.float32)
     array_de_labels = np.array(array_de_labels,dtype=np.uint8)
     np.savez_compressed(output_dir, images=array_de_imagens, masks=array_de_labels)
     logging.info(f"Imagens processadas e salvas em: {output_dir}")
-
 
 # USAGE:
 # run_preprocessing_pipeline('caminho/para/pngs', 'caminho/para/npys', 256)
