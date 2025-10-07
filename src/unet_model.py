@@ -9,6 +9,7 @@ import numpy as np
 import cv2 as cv
 from sklearn.model_selection import train_test_split
 from pre_processamento import Processor, ImagePreProcessor
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
 class Unet:
     
@@ -123,11 +124,11 @@ class Unet:
             metrics=METRICS
         )
         
-        # early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
-        # checkpoint = ModelCheckpoint('best_unet.keras', monitor='val_loss', save_best_only=True)
-        # historico = self.MODEL.fit(self.TRAIN_IMAGES,self.TRAIN_LABELS,validation_data=(self.VAL_IMAGES,self.VAL_LABELS),batch_size=BATCH_SIZE,epochs=EPOCHS,    callbacks=[early_stop, checkpoint])
-        historico = self.MODEL.fit(self.TRAIN_IMAGES,self.TRAIN_LABELS,batch_size=BATCH_SIZE,epochs=EPOCHS)
-        self.MODEL.save(f"{MODEL_NAME}_{EPOCHS}_{OPTIMIZER}_{LOSS}.keras")
+        early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
+        checkpoint = ModelCheckpoint('best_unet.keras', monitor='val_loss', save_best_only=True)
+        historico = self.MODEL.fit(self.TRAIN_IMAGES,self.TRAIN_LABELS,validation_data=(self.VAL_IMAGES,self.VAL_LABELS),batch_size=BATCH_SIZE,epochs=EPOCHS,callbacks=[early_stop, checkpoint])
+        # historico = self.MODEL.fit(self.TRAIN_IMAGES,self.TRAIN_LABELS,batch_size=BATCH_SIZE,epochs=EPOCHS)
+        self.MODEL.save(f"{MODEL_NAME}_{EPOCHS}_epochs_{OPTIMIZER}_{LOSS}.keras")
         
         return historico
     
