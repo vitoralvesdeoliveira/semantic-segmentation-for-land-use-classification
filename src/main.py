@@ -22,6 +22,10 @@ DATASET_PATH = os.path.abspath(os.path.join(PROCESSED_DATA,'dataset-images-label
 
 extrator = ProcessadorLotes(raster_path=RASTER_INPUT,vector_path=VECTOR_INPUT,output_dir=os.path.join(PROCESSED_DATA,"lotes-png"))
 
+fids_to_process = os.listdir(os.path.abspath(os.path.join(PROCESSED_DATA,'labels-json')))
+
+print(fids_to_process)
+
 extrator.extrair_lotes(fids_a_processar=[0,1,2,3,4,5,6,7,8,9,10,22,24,25,35,36,109]) # caso nao seja passado o argumento, processa toda a lista
 
 run_preprocessing_pipeline(
