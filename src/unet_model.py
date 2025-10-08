@@ -13,17 +13,15 @@ from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
 class Unet:
     
-    def __init__(self, DATASET_PATH : str, INPUT_SHAPE : tuple, NUM_CLASSES : int,MODEL = None):
+    def __init__(self, DATASET_PATH : str, INPUT_SHAPE : tuple, NUM_CLASSES : int,COLOR_MAP_RGB: dict):
         self.DATASET_PATH = os.path.abspath(DATASET_PATH)
         self.INPUT_SHAPE = INPUT_SHAPE
         self.NUM_CLASSES = NUM_CLASSES
         self.TEST_IMAGES = None
         self.TEST_LABELS = None
+        self.COLOR_MAP_RGB = COLOR_MAP_RGB
         
-        if (MODEL==None):
-            self.MODEL = self.build_unet_model()
-        else:
-            self.MODEL = MODEL
+        self.MODEL = self.build_unet_model()
     
     def build_unet_model(self) -> keras.Model:
         """
@@ -109,7 +107,7 @@ class Unet:
         
         return model
 
-    def train_model(self,EPOCHS : int= 10,BATCH_SIZE : int = 2,OPTIMIZER : str = 'adam', LOSS = keras.losses.SparseCategoricalCrossentropy(from_logits=False), METRICS : list[str]= ['accuracy'], MODEL_NAME = 'unet_model'):
+    def train_model(self,EPOCHS : int= 10,BATCH_SIZE : int = 1,OPTIMIZER : str = 'adam', LOSS = keras.losses.SparseCategoricalCrossentropy(from_logits=False), METRICS : list[str]= ['accuracy'], MODEL_NAME : str = None):
         data = np.load(self.DATASET_PATH)
         masks = data['masks']
         images = data['images']
@@ -118,6 +116,7 @@ class Unet:
         self.TRAIN_VAL_IMAGES, self.TEST_IMAGES, self.TRAIN_VAL_LABELS, self.TEST_LABELS = train_test_split(images,masks,test_size=0.2,random_state=42)
         self.TRAIN_IMAGES, self.VAL_IMAGES, self.TRAIN_LABELS, self.VAL_LABELS = train_test_split(self.TRAIN_VAL_IMAGES,self.TRAIN_VAL_LABELS,test_size=0.2,random_state=42)
         
+        # COMPILA O MODELO USANDO OTIMIZADOR, LOSS E MÉTRICAS DEFINIDAS
         self.MODEL.compile(
             optimizer=OPTIMIZER,
             loss=LOSS,
@@ -127,18 +126,15 @@ class Unet:
         early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
         checkpoint = ModelCheckpoint('best_unet.keras', monitor='val_loss', save_best_only=True)
         historico = self.MODEL.fit(self.TRAIN_IMAGES,self.TRAIN_LABELS,validation_data=(self.VAL_IMAGES,self.VAL_LABELS),batch_size=BATCH_SIZE,epochs=EPOCHS,callbacks=[early_stop, checkpoint])
-        # historico = self.MODEL.fit(self.TRAIN_IMAGES,self.TRAIN_LABELS,batch_size=BATCH_SIZE,epochs=EPOCHS)
-        self.MODEL.save(f"{MODEL_NAME}_{EPOCHS}_epochs_{OPTIMIZER}_{LOSS}.keras")
+       
+        if (MODEL_NAME == None):
+            MODEL_NAME = f"{MODEL_NAME}_{EPOCHS}_epochs_{OPTIMIZER}_{LOSS}.keras"
+            
+        self.MODEL.save(MODEL_NAME)
         
         return historico
     
     def predict(self,image_path : str | list[str]): # image_path : str | list[str]
-        COLOR_MAP_RGB = {
-        (0, 0, 0): 0,     # unknown    
-        (128, 128, 0): 1,  # edificação - amarelo
-        (128, 0, 0): 2,    # industrial - vermelho
-        (0, 128, 0): 3,     # vegetada - verde
-        }
         processor = ImagePreProcessor(self.INPUT_SHAPE[0])
         image = cv.imread(os.path.abspath(image_path))
         processed_image = processor.process_image(image) # retorna o lote normalizado
@@ -154,7 +150,7 @@ class Unet:
         print(f"pred_mask.shape pós remover dimensão de batch----> {pred_mask.shape}")
         segmented_image = np.zeros((pred_mask.shape[0], pred_mask.shape[1], 3), dtype=np.uint8)
         
-        for class_idx, color in enumerate(COLOR_MAP_RGB):
+        for class_idx, color in enumerate(self.COLOR_MAP_RGB):
             segmented_image[pred_mask == class_idx] = color
             
         print(f"  - Classes únicas encontradas(segmented_image): {np.unique(segmented_image)}") 

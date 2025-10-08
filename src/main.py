@@ -36,7 +36,7 @@ run_preprocessing_pipeline(
     256,
     COLOR_MAP_RGB)
 
-modelo = Unet(DATASET_PATH,(256,256,3),4)
+modelo = Unet(DATASET_PATH,(256,256,3),4,COLOR_MAP_RGB)
 
 modelo.train_model()
 
