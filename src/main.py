@@ -11,11 +11,13 @@ PROCESSED_DATA =  os.path.abspath(os.path.join(cwd,'dataset', 'processed'))
 RASTER_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Quadras-AOI.tif'))
 VECTOR_INPUT = os.path.abspath(os.path.join(RAW_DATA, 'Lotes-AOI.shp'))
 
-COLOR_MAP = {
-        (0, 0, 0): 0,     # unknown      
-        (128, 128, 0): 1,  # edificação
-        (128, 0, 0): 2,    # industrial  
-        (0, 128, 0): 3,     # vegetada
+COLOR_MAP_RGB = {
+    (0, 0, 0): 0,     # unknown    - preto
+    (128, 128, 0): 1,  # edificação - amarelo
+    (128, 0, 0): 2,    # industrial - vermelho
+    (0, 128, 0): 3,     # vegetada - verde
+    (128, 0, 128) : 4, # roxo - agropecuária
+    (0,0,128):5, # agua - azul
 }
 
 DATASET_PATH = os.path.abspath(os.path.join(PROCESSED_DATA,'dataset-images-labels.npz'))
@@ -32,7 +34,7 @@ run_preprocessing_pipeline(
     PROCESSED_DATA,
     DATASET_PATH,
     256,
-    COLOR_MAP)
+    COLOR_MAP_RGB)
 
 modelo = Unet(DATASET_PATH,(256,256,3),4)
 
