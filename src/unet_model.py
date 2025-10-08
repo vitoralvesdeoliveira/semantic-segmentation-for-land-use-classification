@@ -107,7 +107,8 @@ class Unet:
         
         return model
 
-    def train_model(self,EPOCHS : int= 10,BATCH_SIZE : int = 1,OPTIMIZER : str = 'adam', LOSS = keras.losses.SparseCategoricalCrossentropy(from_logits=False), METRICS : list[str]= ['accuracy'], MODEL_NAME : str = None):
+    def train_model(self,EPOCHS : int= 10,BATCH_SIZE : int = 1,OPTIMIZER : str = 'adam', LOSS = 'sparse_categorical_cross_entropy', METRICS : list[str]= ['accuracy'], MODEL_NAME : str = None):
+        
         data = np.load(self.DATASET_PATH)
         masks = data['masks']
         images = data['images']
@@ -116,20 +117,24 @@ class Unet:
         self.TRAIN_VAL_IMAGES, self.TEST_IMAGES, self.TRAIN_VAL_LABELS, self.TEST_LABELS = train_test_split(images,masks,test_size=0.2,random_state=42)
         self.TRAIN_IMAGES, self.VAL_IMAGES, self.TRAIN_LABELS, self.VAL_LABELS = train_test_split(self.TRAIN_VAL_IMAGES,self.TRAIN_VAL_LABELS,test_size=0.2,random_state=42)
         
+        
         # COMPILA O MODELO USANDO OTIMIZADOR, LOSS E MÉTRICAS DEFINIDAS
+        if(LOSS =='sparse_categorical_cross_entropy'):
+            LOSS = keras.losses.SparseCategoricalCrossentropy(from_logits=False)
         self.MODEL.compile(
             optimizer=OPTIMIZER,
             loss=LOSS,
             metrics=METRICS
         )
         
+        # TREINA O MODELO MONITORANDO VAL_LOSS E SALVANDO O MELHOR RESULTADO
         early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)
         checkpoint = ModelCheckpoint('best_unet.keras', monitor='val_loss', save_best_only=True)
         historico = self.MODEL.fit(self.TRAIN_IMAGES,self.TRAIN_LABELS,validation_data=(self.VAL_IMAGES,self.VAL_LABELS),batch_size=BATCH_SIZE,epochs=EPOCHS,callbacks=[early_stop, checkpoint])
-       
+        
+        # SALVA O MODELO FINAL       
         if (MODEL_NAME == None):
-            MODEL_NAME = f"{MODEL_NAME}_{EPOCHS}_epochs_{OPTIMIZER}_{LOSS}.keras"
-            
+            MODEL_NAME = f"UNET_MODEL_{EPOCHS}_epochs_{OPTIMIZER}_{LOSS}.keras"
         self.MODEL.save(MODEL_NAME)
         
         return historico

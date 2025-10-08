@@ -1,0 +1,269 @@
+(venv) vitor@vitor-550XDA:~/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src$ python3 main.py 
+2025-10-08 11:34:47,194 - INFO - Processador de Lotes inicializado com sucesso.
+[1807, 42, 41, 32, 36, 34, 45, 3, 30, 19, 51, 13, 15, 5, 165, 46, 0, 11, 33, 39, 4, 12, 35, 29, 44, 25, 10, 28, 27, 53, 56, 109, 52, 26, 1, 31, 8, 54, 24, 17, 23, 21, 50, 20, 6, 37, 38, 43, 22, 47, 48, 14, 40, 18, 2, 49, 7, 55, 9]
+/home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/venv/lib/python3.12/site-packages/osgeo/gdal.py:312: FutureWarning: Neither gdal.UseExceptions() nor gdal.DontUseExceptions() has been explicitly called. In GDAL 4.0, exceptions will be enabled by default.
+  warnings.warn(
+2025-10-08 11:34:47,195 - INFO - Iniciando extração de 59 lote(s) selecionados entre 1808 lotes.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:47,813 - INFO - Feição 1807 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/1807.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:47,890 - INFO - Feição 42 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/42.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:47,912 - INFO - Feição 41 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/41.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:47,986 - INFO - Feição 32 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/32.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,049 - INFO - Feição 36 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/36.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,115 - INFO - Feição 34 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/34.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,169 - INFO - Feição 45 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/45.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,196 - INFO - Feição 3 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/3.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,243 - INFO - Feição 30 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/30.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,306 - INFO - Feição 19 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/19.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,350 - INFO - Feição 51 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/51.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,401 - INFO - Feição 13 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/13.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,429 - INFO - Feição 15 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/15.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,466 - INFO - Feição 5 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/5.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,553 - INFO - Feição 165 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/165.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,589 - INFO - Feição 46 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/46.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,632 - INFO - Feição 0 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/0.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,678 - INFO - Feição 11 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/11.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,746 - INFO - Feição 33 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/33.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,784 - INFO - Feição 39 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/39.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,819 - INFO - Feição 4 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/4.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,861 - INFO - Feição 12 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/12.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:48,884 - INFO - Feição 35 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/35.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,002 - INFO - Feição 29 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/29.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,040 - INFO - Feição 44 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/44.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,078 - INFO - Feição 25 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/25.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,134 - INFO - Feição 10 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/10.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,155 - INFO - Feição 28 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/28.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,173 - INFO - Feição 27 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/27.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,211 - INFO - Feição 53 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/53.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,246 - INFO - Feição 56 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/56.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,311 - INFO - Feição 109 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/109.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,370 - INFO - Feição 52 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/52.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,392 - INFO - Feição 26 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/26.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,457 - INFO - Feição 1 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/1.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,515 - INFO - Feição 31 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/31.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,555 - INFO - Feição 8 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/8.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,579 - INFO - Feição 54 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/54.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,807 - INFO - Feição 24 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/24.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,874 - INFO - Feição 17 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/17.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,932 - INFO - Feição 23 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/23.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:49,995 - INFO - Feição 21 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/21.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,063 - INFO - Feição 50 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/50.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,106 - INFO - Feição 20 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/20.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,122 - INFO - Feição 6 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/6.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,175 - INFO - Feição 37 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/37.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,201 - INFO - Feição 38 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/38.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,266 - INFO - Feição 43 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/43.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,341 - INFO - Feição 22 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/22.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,378 - INFO - Feição 47 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/47.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,401 - INFO - Feição 48 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/48.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,455 - INFO - Feição 14 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/14.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,489 - INFO - Feição 40 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/40.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,539 - INFO - Feição 18 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/18.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,676 - INFO - Feição 2 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/2.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,729 - INFO - Feição 49 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/49.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,750 - INFO - Feição 7 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/7.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,798 - INFO - Feição 55 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/55.png.
+Warning 1: the source raster dataset has a SRS, but the cutline features
+not.  We assume that the cutline coordinates are expressed in the destination SRS.
+If not, cutline results may be incorrect.
+2025-10-08 11:34:50,886 - INFO - Feição 9 salva em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/lotes-png/9.png.
+2025-10-08 11:34:50,895 - INFO - Processo de extração concluído!
+2025-10-08 11:34:50,895 - INFO - Processador inicializado com target size: 256'.
+2025-10-08 11:34:50,895 - INFO - Processador de máscara inicializado.
+2025-10-08 11:34:50,895 - INFO - Encontradas 59 imagens e 59 labels para processar.
+Processando Arquivos: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 59/59 [00:00<00:00, 65.82it/s]
+2025-10-08 11:34:52,643 - INFO - Imagens processadas e salvas em: /home/vitor/Documentos/TCC/TCC/scripts/semantic-segmentation-for-land-use-classification/src/dataset/processed/dataset-images-labels.npz
+Epoch 1/10
+37/37 ━━━━━━━━━━━━━━━━━━━━ 111s 3s/step - accuracy: 0.6025 - loss: 9.8050 - val_accuracy: 0.6983 - val_loss: 0.9114
+Epoch 2/10
+37/37 ━━━━━━━━━━━━━━━━━━━━ 117s 3s/step - accuracy: 0.6461 - loss: 1.0064 - val_accuracy: 0.6771 - val_loss: 0.8689
+Epoch 3/10
+37/37 ━━━━━━━━━━━━━━━━━━━━ 106s 3s/step - accuracy: 0.6429 - loss: 0.9534 - val_accuracy: 0.6784 - val_loss: 0.8371
+Epoch 4/10
+37/37 ━━━━━━━━━━━━━━━━━━━━ 104s 3s/step - accuracy: 0.6426 - loss: 0.9408 - val_accuracy: 0.6983 - val_loss: 0.8294
+Epoch 5/10
+37/37 ━━━━━━━━━━━━━━━━━━━━ 106s 3s/step - accuracy: 0.6480 - loss: 0.9189 - val_accuracy: 0.6895 - val_loss: 0.8091
+Epoch 6/10
+37/37 ━━━━━━━━━━━━━━━━━━━━ 102s 3s/step - accuracy: 0.6407 - loss: 0.9211 - val_accuracy: 0.6983 - val_loss: 0.8576
+Epoch 7/10
+37/37 ━━━━━━━━━━━━━━━━━━━━ 101s 3s/step - accuracy: 0.6407 - loss: 0.9096 - val_accuracy: 0.6983 - val_loss: 0.8093
+Epoch 8/10
+37/37 ━━━━━━━━━━━━━━━━━━━━ 105s 3s/step - accuracy: 0.6477 - loss: 1.0043 - val_accuracy: 0.6858 - val_loss: 0.8451
+Epoch 9/10
+37/37 ━━━━━━━━━━━━━━━━━━━━ 101s 3s/step - accuracy: 0.6231 - loss: 1.0163 - val_accuracy: 0.6978 - val_loss: 0.8238
+Epoch 10/10
+37/37 ━━━━━━━━━━━━━━━━━━━━ 101s 3s/step - accuracy: 0.6489 - loss: 0.9123 - val_accuracy: 0.6939 - val_loss: 0.8299
+1/1 ━━━━━━━━━━━━━━━━━━━━ 8s 8s/step - accuracy: 0.6691 - loss: 0.8416
